@@ -1,0 +1,306 @@
+/* --- 1. GLOBAL & THEME VARIABLES --- */
+:root {
+    --bg-dark: #0f172a;       /* Biru gelap pekat */
+    --card-bg: #1e293b;       /* Biru gelap kartu */
+    --gold: #fbbf24;          /* Warna Koin */
+    --blue-exp: #3b82f6;      /* Warna EXP */
+    --text-main: #f8fafc;
+    --accent: #8b5cf6;        /* Warna Ungu Magic */
+    --red-low: #ef4444;       /* Low Difficulty */
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* --- 2. GAME HEADER (STATUS RINGKAS) --- */
+.game-header {
+    background: var(--card-bg);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--accent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.lv-badge {
+    background: var(--accent);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+
+.coin-wrap {
+    color: var(--gold);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- 3. TAB SYSTEM & LAYOUT --- */
+.tab-panel {
+    display: none;
+    padding: 20px;
+    padding-bottom: 100px; /* Ruang agar tidak tertutup nav bawah */
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 4. CALENDAR UI (TAB MISI) --- */
+.calendar-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.cal-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.cal-day {
+    padding: 10px 5px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.cal-day.active {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+/* --- 5. ATTRIBUTE CARDS (TAB STATUS) --- */
+.attributes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.attr-card {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-bottom: 3px solid var(--accent);
+}
+
+.attr-card i { font-size: 1.5rem; margin-bottom: 5px; color: var(--accent); }
+
+.attr-card button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--gold);
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- 6. EXP BAR --- */
+.exp-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.exp-bar {
+    background: #000;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+#exp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue-exp), #00d2ff);
+    box-shadow: 0 0 10px var(--blue-exp);
+    transition: width 0.5s ease;
+}
+
+/* --- 7. BOTTOM NAVIGATION --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: var(--card-bg);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: 0.3s;
+}
+
+.nav-item i { font-size: 1.4rem; margin-bottom: 4px; }
+
+.nav-item.active {
+    color: var(--accent);
+    transform: translateY(-5px);
+}
+
+/* --- 8. MODAL STYLING --- */
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none; /* Kita ganti modal-hidden dengan display none */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-box {
+    background: var(--card-bg);
+    width: 90%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid var(--accent);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 8px;
+}
+
+/* --- QUEST CARD IMPROVEMENT --- */
+.quest-card {
+    background: rgba(30, 41, 59, 0.7);
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.quest-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.quest-info strong {
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.quest-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Tombol Lingkaran Kecil & Rapi */
+.quest-actions button {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.btn-play { background: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4); }
+.btn-check { background: #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+.btn-delete { background: #ef4444; opacity: 0.8; }
+
+.quest-actions button:hover { transform: scale(1.1); }
+
+.glow-text {
+    color: var(--gold);
+    text-shadow: 0 0 5px var(--gold);
+    font-weight: bold;
+}
+
+/* --- TIER COLORS --- */
+.rarity-bronze { border-left: 4px solid #cd7f32 !important; }
+.rarity-silver { border-left: 4px solid #c0c0c0 !important; }
+.rarity-gold { border-left: 4px solid #ffd700 !important; }
+.rarity-legendary { 
+    border-left: 4px solid #ff00ff !important; 
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+.btn-cancel { background: #64748b; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; }
+.btn-save { background: var(--accent); color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; margin-left: 10px; }
+
+.toggle-btn {
+    background: #1e293b;
+    color: white;
+    border: 1px solid var(--accent);
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.toggle-btn.active {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
