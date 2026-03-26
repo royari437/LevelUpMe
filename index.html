@@ -10,16 +10,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="login-screen" class="modal-overlay" style="display: flex; flex-direction: column; background: var(--bg-dark); z-index: 9999;">
-        <div class="modal-box" style="text-align: center;">
-            <h2 style="color: var(--accent); margin-bottom: 20px;"><i class="fas fa-user-shield"></i> LevelUpMe Login</h2>
-            <input type="email" id="login-email" placeholder="Email (Contoh: roy@mail.com)">
-            <input type="password" id="login-password" placeholder="Password (Minimal 6 karakter)">
+    <div id="login-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0f172a; z-index: 10000; display: flex; justify-content: center; align-items: center;">
+        <div class="modal-box" style="text-align: center; background: #1e293b; padding: 30px; border-radius: 20px; border: 1px solid #8b5cf6; width: 90%; max-width: 400px;">
+            <h2 style="color: #8b5cf6; margin-bottom: 20px;"><i class="fas fa-user-shield"></i> LevelUpMe Login</h2>
+            <input type="email" id="login-email" placeholder="Email" style="width: 100%; padding: 12px; margin: 10px 0; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px;">
+            <input type="password" id="login-password" placeholder="Password" style="width: 100%; padding: 12px; margin: 10px 0; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px;">
             <div style="display: flex; gap: 10px; margin-top: 20px;">
-                <button onclick="handleLogin()" class="btn-save" style="flex: 1;">Login</button>
-                <button onclick="handleRegister()" class="btn-cancel" style="flex: 1;">Daftar Akun</button>
+                <button onclick="handleLogin()" class="btn-save" style="flex: 1; padding: 12px; cursor: pointer;">Login</button>
+                <button onclick="handleRegister()" class="btn-cancel" style="flex: 1; padding: 12px; cursor: pointer;">Daftar</button>
             </div>
-            <p id="login-error" style="color: var(--red-low); font-size: 0.8rem; margin-top: 10px;"></p>
+            <p id="login-error" style="color: #ef4444; font-size: 0.8rem; margin-top: 15px;"></p>
         </div>
     </div>
 

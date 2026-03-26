@@ -76,11 +76,10 @@ window.handleLogin = () => {
 onAuthStateChanged(auth, (user) => {
     if (user) {
         currentUser = user;
-        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('login-screen').style.display = 'none'; // Sembunyikan saat login sukses
         loadUserData();
     } else {
-        currentUser = null;
-        document.getElementById('login-screen').style.display = 'flex';
+        document.getElementById('login-screen').style.display = 'flex'; // Tampilkan jika belum login
     }
 });
 
