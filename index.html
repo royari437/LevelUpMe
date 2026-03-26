@@ -10,6 +10,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="login-screen" class="modal-overlay" style="display: flex; flex-direction: column; background: var(--bg-dark); z-index: 9999;">
+        <div class="modal-box" style="text-align: center;">
+            <h2 style="color: var(--accent); margin-bottom: 20px;"><i class="fas fa-user-shield"></i> LevelUpMe Login</h2>
+            <input type="email" id="login-email" placeholder="Email (Contoh: roy@mail.com)">
+            <input type="password" id="login-password" placeholder="Password (Minimal 6 karakter)">
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button onclick="handleLogin()" class="btn-save" style="flex: 1;">Login</button>
+                <button onclick="handleRegister()" class="btn-cancel" style="flex: 1;">Daftar Akun</button>
+            </div>
+            <p id="login-error" style="color: var(--red-low); font-size: 0.8rem; margin-top: 10px;"></p>
+        </div>
+    </div>
 
     <header class="game-header">
         <div class="user-brief">
@@ -134,6 +146,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

@@ -304,3 +304,37 @@ input, select {
     background: var(--accent);
     box-shadow: 0 0 10px var(--accent);
 }
+
+/* Tambahkan ini di bagian bawah style.css */
+
+#login-screen input:focus {
+    outline: 2px solid var(--accent);
+    border-color: transparent;
+}
+
+/* Memperbaiki tampilan modal login agar terlihat lebih "Game-ish" */
+#login-screen .modal-box {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+/* Pastikan tombol simpan dan batal di login screen terlihat jelas */
+.btn-save {
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-save:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.btn-cancel {
+    background: #475569;
+    color: white;
+    border: none;
+    font-weight: 600;
+}
