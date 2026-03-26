@@ -24,6 +24,13 @@ body {
 }
 
 /* --- 2. GAME HEADER (STATUS RINGKAS) --- */
+.avatar-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px; /* Sesuaikan tinggi agar tetap proporsional */
+}
+
 .game-header {
     background: var(--card-bg);
     padding: 15px 20px;

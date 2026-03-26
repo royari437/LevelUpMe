@@ -26,13 +26,9 @@
     <header class="game-header">
         <div class="user-brief">
             <span class="lv-badge">Lv. <span id="top-lv">1</span></span>
-            <span class="user-name">ROY ARI</span>
-        </div>
-        <div class="currency-brief">
-            <div class="coin-wrap">
-                <i class="fas fa-coins"></i>
-                <span id="top-coins">0</span>
-            </div>
+            <span class="user-name" id="user-name-display" onclick="changeNickname()" style="cursor:pointer;">
+                ROY ARI <i class="fas fa-edit" style="font-size: 0.7rem; opacity: 0.6;"></i>
+            </span>
         </div>
     </header>
 
@@ -40,8 +36,8 @@
         
         <section id="tab-status" class="tab-panel">
             <div class="profile-section">
-                <div class="avatar-box">
-                    <img src="logo.jpg" alt="Avatar" id="player-avatar">
+                <div class="avatar-box" style="font-size: 3rem; color: var(--accent); margin-bottom: 10px;">
+                    <i class="fas fa-user-circle"></i>
                 </div>
                 <div class="exp-container">
                     <div class="exp-label">

@@ -7,7 +7,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyBZr_SVZjljpGMgNNy3-9LGzD3qRgcjZdI",
     authDomain: "levelupme-c162c.firebaseapp.com",
     projectId: "levelupme-c162c",
-    databaseURL: "https://levelupme-c162c-default-rtdb.firebaseio.com",
+    databaseURL: "https://levelupme-c162c-default-rtdb.asia-southeast1.firebasedatabase.app",
     storageBucket: "levelupme-c162c.firebasestorage.app",
     messagingSenderId: "301763237990",
     appId: "1:301763237990:web:4d03a6cdc88c4c97f4f5a7",
@@ -316,3 +316,29 @@ window.addExp = (amount) => {
 window.upgradeStat = (stat) => {
     if (gameState.sp > 0) { gameState.stats[stat]++; gameState.sp--; window.saveData(); }
 };
+
+// Tambahkan 'name' ke initial state jika belum ada
+// (Data ini akan tersimpan otomatis ke Firebase saat saveData dipanggil)
+
+window.changeNickname = () => {
+    const newName = prompt("Masukkan nama karakter baru:", gameState.name || "ROY ARI");
+    
+    if (newName && newName.trim().length > 0) {
+        if (newName.length > 15) {
+            alert("Nama terlalu panjang! Maksimal 15 karakter.");
+            return;
+        }
+        
+        gameState.name = newName.trim();
+        document.getElementById('user-name-display').innerHTML = 
+            `${gameState.name} <i class="fas fa-edit" style="font-size: 0.7rem; opacity: 0.6;"></i>`;
+        
+        window.saveData(); // Simpan ke Firebase
+        alert("Nama berhasil diubah!");
+    }
+};
+
+// Pastikan di dalam fungsi renderUI(), nama juga diperbarui:
+// Tambahkan baris ini di dalam fungsi window.renderUI = () => { ... }
+document.getElementById('user-name-display').innerHTML = 
+    `${gameState.name || "ROY ARI"} <i class="fas fa-edit" style="font-size: 0.7rem; opacity: 0.6;"></i>`;
