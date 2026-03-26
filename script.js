@@ -58,12 +58,24 @@ const loadUserData = () => {
 };
 
 // --- 4. AUTH SYSTEM ---
-window.handleRegister = () => { // Tambahkan window. agar terbaca oleh HTML
+window.handleRegister = () => {
     const email = document.getElementById('login-email').value;
     const pass = document.getElementById('login-password').value;
+    
+    if (!email || !pass) {
+        document.getElementById('login-error').innerText = "Email dan password wajib diisi!";
+        return;
+    }
+
     createUserWithEmailAndPassword(auth, email, pass)
-        .then(() => alert("Akun berhasil dibuat! Silakan login."))
-        .catch((error) => document.getElementById('login-error').innerText = error.message);
+        .then(() => alert("Akun berhasil dibuat! Silakan klik Login."))
+        .catch((error) => {
+            if (error.code === 'auth/email-already-in-use') {
+                document.getElementById('login-error').innerText = "Email sudah terdaftar!";
+            } else {
+                document.getElementById('login-error').innerText = "Error: " + error.message;
+            }
+        });
 };
 
 window.handleLogin = () => { // Tambahkan window. agar terbaca oleh HTML
