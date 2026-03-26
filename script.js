@@ -58,7 +58,7 @@ const loadUserData = () => {
 };
 
 // --- 4. AUTH SYSTEM ---
-window.handleRegister = () => {
+window.handleRegister = () => { // Tambahkan window. agar terbaca oleh HTML
     const email = document.getElementById('login-email').value;
     const pass = document.getElementById('login-password').value;
     createUserWithEmailAndPassword(auth, email, pass)
@@ -66,7 +66,7 @@ window.handleRegister = () => {
         .catch((error) => document.getElementById('login-error').innerText = error.message);
 };
 
-window.handleLogin = () => {
+window.handleLogin = () => { // Tambahkan window. agar terbaca oleh HTML
     const email = document.getElementById('login-email').value;
     const pass = document.getElementById('login-password').value;
     signInWithEmailAndPassword(auth, email, pass)
@@ -76,10 +76,12 @@ window.handleLogin = () => {
 onAuthStateChanged(auth, (user) => {
     if (user) {
         currentUser = user;
-        document.getElementById('login-screen').style.display = 'none'; // Sembunyikan saat login sukses
+        // Layar login hanya hilang jika user berhasil masuk
+        document.getElementById('login-screen').style.display = 'none'; 
         loadUserData();
     } else {
-        document.getElementById('login-screen').style.display = 'flex'; // Tampilkan jika belum login
+        currentUser = null;
+        document.getElementById('login-screen').style.display = 'flex';
     }
 });
 
